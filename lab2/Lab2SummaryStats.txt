@@ -1,0 +1,56 @@
+Log of price versus the log of property sqft
+lm(formula = log10(PRICE) ~ log10(PROPERTYSQFT), data = dataset)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.96783 -0.19911 -0.05041  0.19131  1.01634 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(>|t|)    
+(Intercept)          2.42346    0.05386   44.99   <2e-16 ***
+log10(PROPERTYSQFT)  1.11570    0.01673   66.70   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2887 on 3176 degrees of freedom
+Multiple R-squared:  0.5835,	Adjusted R-squared:  0.5833 
+F-statistic:  4449 on 1 and 3176 DF,  p-value: < 2.2e-16
+
+
+log of price versus lthe log of the sum of beds and bath
+lm(formula = log10(PRICE) ~ log10(BEDS + BATH), data = bedbathandbeyond)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.34028 -0.22562 -0.07111  0.19110  1.77803 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         5.18829    0.01985  261.40   <2e-16 ***
+log10(BEDS + BATH)  1.15925    0.02697   42.98   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3545 on 3162 degrees of freedom
+Multiple R-squared:  0.3687,	Adjusted R-squared:  0.3685 
+F-statistic:  1847 on 1 and 3162 DF,  p-value: < 2.2e-16
+
+
+log of price versus the log of the sum of 500*BATH and property sqft
+lm(formula = log10(PRICE) ~ log10(500 * BATH + PROPERTYSQFT), 
+    data = bedbathandbeyond)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.1393 -0.1924 -0.0488  0.1792  1.0093 
+
+Coefficients:
+                                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                       1.62981    0.06447   25.28   <2e-16 ***
+log10(500 * BATH + PROPERTYSQFT)  1.27468    0.01876   67.95   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2845 on 3162 degrees of freedom
+Multiple R-squared:  0.5936,	Adjusted R-squared:  0.5934 
+F-statistic:  4618 on 1 and 3162 DF,  p-value: < 2.2e-16
