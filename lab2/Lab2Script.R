@@ -7,9 +7,6 @@ NY_House_Dataset <- read_csv("NY-House-Dataset.csv")
 
 dataset <- NY_House_Dataset
 
-ggplot(dataset, aes(x = log10(PROPERTYSQFT), y = log10(PRICE))) +
-  geom_point()
-
 ## filter data
 dataset <- dataset[dataset$PRICE<195000000,]
 
@@ -20,17 +17,53 @@ dataset$PROPERTYSQFT[dataset$BROKERTITLE=="Brokered by Douglas Elliman - 575 Mad
 ## column names
 names(dataset)
 
-## fit linear model
-lmod <- lm(PRICE~PROPERTYSQFT, data = dataset)
+## sqft versus price
 
-lmod <- lm(log10(PRICE)~log10(PROPERTYSQFT), data = dataset)
 
+## graph data with regression line
 ggplot(dataset, aes(x = log10(PROPERTYSQFT), y = log10(PRICE))) +
-  geom_point()
+  geom_point() +
+  stat_smooth(method = "lm", col="red")
+
+## fit linear model
+lmod <- lm(log10(PRICE)~log10(PROPERTYSQFT), data = dataset)
 ## print model output
 summary(lmod)
 
-bedbathandbeyond <- dataset[dataset$BEDS<20,dataset$BATH<20,]
 
-ggplot(bedbathandbeyond, aes(x = BEDS+BATH, y = log10(PRICE))) +
-  geom_point()
+##beds+baths versus price
+
+
+## filter data
+bedbathandbeyond <- dataset[dataset$BEDS<20,]
+
+bedbathandbeyond <- bedbathandbeyond[bedbathandbeyond$BATH<20,]
+
+
+## graph data with regression line
+ggplot(bedbathandbeyond, aes(x = log10(BEDS+BATH), y = log10(PRICE))) +
+  geom_point() +
+  stat_smooth(method = "lm", col="red")
+
+
+## fit linear model
+lmod <- lm(log10(PRICE)~log10(BEDS+BATH), data = bedbathandbeyond)
+## print model output
+summary(lmod)
+
+
+
+##500xbaths+sqft versus price
+
+
+## graph data with regression line
+ggplot(bedbathandbeyond, aes(x = log10(500*BATH+PROPERTYSQFT), y = log10(PRICE))) +
+  geom_point() +
+  stat_smooth(method = "lm", col="red")
+
+## fit linear model
+lmod <- lm(log10(PRICE)~log10(500*BATH+PROPERTYSQFT), data = bedbathandbeyond)
+## print model output
+summary(lmod)
+
+#result
