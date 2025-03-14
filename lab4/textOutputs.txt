@@ -1,0 +1,30 @@
+2. The three variables that contribute the most to the first principal component are: Proanthocyanins, total phenols, and flavonoids
+
+Using all vars:
+Contingency Table:
+
+         actual
+predicted  1  2  3
+        1 11  1  1
+        2  2  8  0
+        3  1  2 10
+
+Accuracy: 0.8055556
+Precisions:  0.7857143 0.7272727 0.9090909
+Recalls:  0.8461538 0.8 0.7692308
+Fscores:  0.8148148 0.7619048 0.8333333
+
+
+Using top 3 PCs:
+Contingency Table:
+
+         actual
+predicted  1  2  3
+        1 59  0  0
+        2  0 70  1
+        3  0  1 47
+
+Accuracy: 0.988764
+Precisions:  1 0.9859155 0.9791667
+Recalls:  1 0.9859155 0.9791667
+Fscores:  1 0.9859155 0.9791667
