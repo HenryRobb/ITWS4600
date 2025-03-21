@@ -1,0 +1,34 @@
+Using the wine dataset:
+● Train 2 SVM classifiers to predict the type of wine using a subset of the other 13
+variables. You may choose the subset based on previous analysis. One using a linear
+kernel and another of your choice.
+
+Linear Kernel Results (Test Set Results):
+precision    recall        f1
+1 1.0000000 0.9411765 0.9696970
+2 0.8260870 0.8260870 0.8260870
+3 0.7333333 0.7857143 0.7586207
+
+Radial Kernel Results (Test Set Results):
+before optimization:
+ precision    recall        f1
+1 1.0000000 0.9411765 0.9696970
+2 0.8800000 0.9565217 0.9166667
+3 0.9230769 0.8571429 0.8888889
+after:
+ precision    recall        f1
+1 1.0000000 0.8823529 0.9375000
+2 0.8076923 0.9130435 0.8571429
+3 0.8461538 0.7857143 0.8148148
+
+
+● Choose another classification method (kNN, NaiveBayes, etc.) and train a classifier
+based on the same features.
+kNN where k=3
+precision    recall        f1
+1 0.9411765 0.8888889 0.9142857
+2 0.8260870 0.6333333 0.7169811
+3 0.1428571 0.3333333 0.2000000
+
+● Compare the performance of the 2 models (Precision, Recall, F1)
+The SVM did the best unsuprisingly when considering how much compute power they require. The kNN performed very admirably considering how overlapped the data points are. It doesn't really make sense, and is probably user error, but the tuned svm performed worse than the original. 
